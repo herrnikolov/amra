@@ -17,7 +17,7 @@ stages:
       buildPlatform: 'Any CPU'
     steps:
       #Build
-      - template: devops/build.yml
+      - template: build.yml
         parameters:
           buildConfiguration: '$(buildConfiguration)' 
       #Test
