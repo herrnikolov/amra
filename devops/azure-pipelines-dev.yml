@@ -37,49 +37,49 @@ stages:
       #   displayName: 'Run WhiteSource Bolt' 
       #   inputs:
       #     cwd: 'src'
-# - stage: 'Provision_Dev'
-#   displayName: 'Provision the Dev Web Application'
-#   jobs: 
-#   - job: 'DeployInfrastructureDev'
-#     displayName: 'Deploy Dev Infrastructure job'
-#     pool:
-#       vmImage: 'windows-latest'
-#     variables:
-#     - group: 'Release'
-#     steps:
-#     - task: AzureResourceManagerTemplateDeployment@3
-#       inputs:
-#         deploymentScope: 'Resource Group'
-#         ConnectedServiceName: 'Azure Service Connection'
-#         subscriptionName: '$(subscription)'
-#         action: 'Create Or Update Resource Group'
-#         resourceGroupName: '$(resourceGroupName)'
-#         location: '$(location)'
-#         templateLocation: 'Linked artifact'
-#         csmFile: '**/dev_template.json'
-#         csmParametersFile: '**/dev_parameters.json'
-#         deploymentMode: 'Incremental'
-#         deploymentOutputs: ResourceGroupDeploymentOutputs 
-# - stage: 'Deploy_Dev' 
-#   displayName: 'Deploy to the Dev environment'
-#   # dependsOn: 
-#   #     - Provision_Dev
-#   jobs:
-#   - deployment: Deploy
-#     pool:
-#       vmImage: 'windows-latest'
-#     environment: dev
-#     variables:
-#     - group: Release
-#     strategy:
-#       runOnce:
-#         deploy:
-#           steps:
-#           - download: current
-#             artifact: drop
-#           - task: AzureWebApp@1
-#             displayName: 'Azure App Service Deploy: website'
-#             inputs:
-#               azureSubscription: 'Azure Service Connection'
-#               appName: '$(WebAppNameDev)' 
-#               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+- stage: 'Provision_Dev'
+  displayName: 'Provision the Dev Web Application'
+  jobs: 
+  - job: 'DeployInfrastructureDev'
+    displayName: 'Deploy Dev Infrastructure job'
+    pool:
+      vmImage: 'windows-latest'
+    variables:
+    - group: 'Release'
+    steps:
+    - task: AzureResourceManagerTemplateDeployment@3
+      inputs:
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: 'Azure Service Connection'
+        subscriptionName: '$(subscription)'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: '$(resourceGroupName)'
+        location: '$(location)'
+        templateLocation: 'Linked artifact'
+        csmFile: '**/dev_template.json'
+        csmParametersFile: '**/dev_parameters.json'
+        deploymentMode: 'Incremental'
+        deploymentOutputs: ResourceGroupDeploymentOutputs 
+- stage: 'Deploy_Dev' 
+  displayName: 'Deploy to the Dev environment'
+  # dependsOn: 
+  #     - Provision_Dev
+  jobs:
+  - deployment: Deploy
+    pool:
+      vmImage: 'windows-latest'
+    environment: dev
+    variables:
+    - group: Release
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          - task: AzureWebApp@1
+            displayName: 'Azure App Service Deploy: website'
+            inputs:
+              azureSubscription: 'Azure Service Connection'
+              appName: '$(WebAppNameDev)' 
+              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
