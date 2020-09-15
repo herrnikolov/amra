@@ -34,10 +34,10 @@ stages:
       #     arguments: '--configuration $(buildConfiguration) --no-build'
       #     # publishTestResults: true
       #     projects: 'amra.test/*.test.csproj'
-      # - task: WhiteSource Bolt@20
-      #   displayName: 'Run WhiteSource Bolt' 
-      #   inputs:
-      #     cwd: 'src'
+      - task: WhiteSource Bolt@20
+        displayName: 'Run WhiteSource Bolt' 
+        inputs:
+          cwd: 'src'
 - stage: 'Provision_Dev'
   displayName: 'Provision the Dev Web Application'
   jobs: 
