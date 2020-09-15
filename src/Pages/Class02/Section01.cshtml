@@ -1,0 +1,152 @@
+﻿@page
+@model HamRadioLicense.Pages.Section01Model
+@{
+    ViewData["Title"] = "Section01";
+    Layout = "Shared/_Layout";
+}
+
+<h1>Section01</h1>
+
+<div>
+    <h1>Радиолюбителски клас 2</h1>
+    <h1>Раздел 1 – Електротехника и радиотехника</h1>
+    <h1>Актуализиран конспект 18.02.2019 г.</h1>
+</div>
+<div>
+    <table class="table">
+        <thead>
+        </thead>
+        <tbody>
+            @foreach (var question in Model.Section01)
+            {
+                <tr>
+                    <td style="font-size:larger"><b>Q</b> @question.Problem</td>
+                </tr>
+
+                @if (question.CorrectAnswer.Equals("a"))
+                {
+                    if (question.AnswerA.EndsWith(".png"))
+                    {
+                        <tr>
+                            <td style="background-color:green">А. <img src="~/img/@question.AnswerA" /></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td style="background-color:green">@question.AnswerA</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    if (question.AnswerA.EndsWith(".png"))
+                    {
+                        <tr>
+                            <td>А. <img src="~/img/@question.AnswerA" /></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td style="background-color:grey">@question.AnswerA</td>
+                        </tr>
+                    }
+                }
+
+                @if (question.CorrectAnswer.Equals("b"))
+                {
+                    if (question.AnswerB.EndsWith(".png"))
+                    {
+                        <tr>
+                            <td style="background-color:green"><img src="~/img/@question.AnswerB" /></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td style="background-color:green">@question.AnswerB</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    if (question.AnswerB.EndsWith(".png"))
+                    {
+                        <tr>
+                            <td>Б. <img src="~/img/@question.AnswerB" /></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td style="background-color:grey">@question.AnswerB</td>
+                        </tr>
+                    }
+                }
+
+                @if (question.CorrectAnswer.Equals("c"))
+                {
+                    if (question.AnswerC.EndsWith(".png"))
+                    {
+                        <tr>
+                            <td style="background-color:green">В. <img src="~/img/@question.AnswerC" /></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td style="background-color:green">@question.AnswerC</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    if (question.AnswerC.EndsWith(".png"))
+                    {
+                        <tr>
+                            <td>В. <img src="~/img/@question.AnswerC" /></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td style="background-color:grey">@question.AnswerC</td>
+                        </tr>
+                    }
+                }
+
+                @if (question.CorrectAnswer.Equals("d"))
+                {
+                    if (question.AnswerD.EndsWith(".png"))
+                    {
+                        <tr>
+                            <td style="background-color:green"><img src="~/img/@question.AnswerD" /></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td style="background-color:green">@question.AnswerD</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    if (question.AnswerD.EndsWith(".png"))
+                    {
+                        <tr>
+                            <td>Г. <img src="~/img/@question.AnswerD" /></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td style="background-color:grey">@question.AnswerD</td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>

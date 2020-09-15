@@ -1,0 +1,80 @@
+﻿@page
+@model HamRadioLicense.Pages.Section03Model
+@{
+    ViewData["Title"] = "Section03";
+    Layout = "Shared/_Layout";
+}
+
+<h1>Section03</h1>
+
+<div>
+    <h1>Радиолюбителски клас 2</h1>
+    <h1>Раздел 3 – Нормативна уредба</h1>
+    <h1>Актуализиран конспект 18.02.2019 г.</h1>
+</div>
+<div>
+    <table class="table">
+        <thead>
+        </thead>
+        <tbody>
+            @foreach (var question in Model.Section03)
+            {
+                <tr>
+                    <td style="font-size:larger"><b>Q</b> @question.Problem</td>
+                </tr>
+
+                @if (question.CorrectAnswer.Equals("a"))
+                {
+                    <tr>
+                        <td style="background-color:green">@question.AnswerA</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td style="background-color:grey">@question.AnswerA</td>
+                    </tr>
+                }
+
+                @if (question.CorrectAnswer.Equals("b"))
+                {
+                    <tr>
+                        <td style="background-color: green">@question.AnswerB</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td style="background-color:grey">@question.AnswerB</td>
+                    </tr>
+                }
+
+                @if (question.CorrectAnswer.Equals("c"))
+                {
+                    <tr>
+                        <td style="background-color:green">@question.AnswerC</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td style="background-color:grey">@question.AnswerC</td>
+                    </tr>
+                }
+
+                @if (question.CorrectAnswer.Equals("d"))
+                {
+                    <tr>
+                        <td style="background-color:green">@question.AnswerD</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td style="background-color:grey">@question.AnswerD</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
