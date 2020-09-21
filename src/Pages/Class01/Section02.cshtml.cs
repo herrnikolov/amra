@@ -13,7 +13,7 @@ namespace HamRadioLicense.Pages.Class01
         public List<Question> Section02 = new List<Question>();
         public void OnGet()
         {
-            var jsonString = System.IO.File.ReadAllText(@"wwwroot/seedfiles/class02_section02_codes_abbriviations.json");
+            var jsonString = System.IO.File.ReadAllText(@"wwwroot/seedfiles/class01_section02_codes_abbriviations.json");
             Section02 = JsonSerializer.Deserialize<List<Question>>(jsonString);
         }
     }
